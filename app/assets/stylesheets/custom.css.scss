@@ -45,13 +45,25 @@ $navbar-default-bg: #073b15;
     text-decoration: none;
 }
 
+.description {
+    margin-top: 0;
+}
+
+.well a {
+    color: $navbar-default-bg;
+}
+
+.chef-info {
+    margin-top: 12px;
+}
+
 footer {
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid #eaeaea;
   color: #777;
   padding-left: 10px;
-  padding-right: 10px;
+  padding-right: 1px;
 }
 
 
