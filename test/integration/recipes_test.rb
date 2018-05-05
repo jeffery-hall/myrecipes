@@ -6,7 +6,8 @@ class RecipesTest < ActionDispatch::IntegrationTest
   # end
 
   def setup
-    @chef = Chef.create!(chefname: "Olivia", email: "olivia@gmail.com")
+    @chef = Chef.create!(chefname: "Olivia", email: "olivia@gmail.com",
+                        password: "password", password_confirmation: "password")
     @recipe = Recipe.create(name:"Spaghetti and Meatballs", description: "Great Italian classic. Ready in minutes.", chef: @chef)
     @recipe2 = @chef.recipes.build(name: "Mac and Cheese", description: "Mac and cheese with smoked chicken.  It's bacon dance good!")
     @recipe2.save
@@ -32,7 +33,7 @@ class RecipesTest < ActionDispatch::IntegrationTest
     assert_match @chef.chefname, response.body
     assert_select 'a[href=?]', edit_recipe_path(@recipe), text: "Edit this recipe"
     assert_select 'a[href=?]', recipe_path(@recipe), text: "Delete this recipe"
-    # assert select 'a[href=?]', recipes_path, text: "Return to recipes listing"
+    assert_select 'a[href=?]', recipes_path, text: "Return to recipes listing"
   end
 
   test "create new valid recipe" do
